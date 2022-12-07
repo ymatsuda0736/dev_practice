@@ -31,14 +31,3 @@ class GreatestCommonDivisorCalculator:
             if self.number_1 % divisor == 0 and self.number_2 % divisor == 0:
                 return divisor
         return 1
-
-
-def display_result(func):
-    def exec_and_display():
-        try:
-            func()
-            print(f"☀️ 成功: 「{func.__name__}」")
-        except Exception as e:
-            print(f"☔️ 失敗: 「{func.__name__}」: {e}")
-
-    return exec_and_display
