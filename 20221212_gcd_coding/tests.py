@@ -94,5 +94,6 @@ class GreatestCommonDivisorTester:
 
         start = dt.now()
         result = GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
-        assert (dt.now() - start).total_seconds() <= required_speed_seconds
+        elapsed_seconds = (dt.now() - start).total_seconds()
+        assert elapsed_seconds <= required_speed_seconds, f"elapsed: 「{str(elapsed_seconds)} seconds」"
         assert result == expected
