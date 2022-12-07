@@ -1,4 +1,5 @@
-from .gmd import GreatestCommonDivisorCalculator
+from gmd import GreatestCommonDivisorCalculator
+from datetime import datetime as dt
 
 
 def display_result(func):
@@ -25,6 +26,7 @@ class GreatestCommonDivisorTester:
         self.test_0と0の最大公約数は0()
         self.test_2と10の最大公約数は2()
         self.test_マイナス2と10の最大公約数は2()
+        self.test_速度_10000000と10の最大公約数を0_01秒以内()
 
     @staticmethod
     @display_result
@@ -81,3 +83,16 @@ class GreatestCommonDivisorTester:
         number_2 = 10
         expected = 2
         assert GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+
+    @staticmethod
+    @display_result
+    def test_速度_10000000と10の最大公約数を0_01秒以内():
+        number_1 = 10000000
+        number_2 = 10
+        expected = 10
+        required_speed_seconds = 0.01
+
+        start = dt.now()
+        result = GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+        assert (dt.now() - start).total_seconds() <= required_speed_seconds
+        assert result == expected
