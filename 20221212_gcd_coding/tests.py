@@ -28,6 +28,7 @@ class GreatestCommonDivisorTester:
         self.test_2と10の最大公約数は2()
         self.test_マイナス2と10の最大公約数は2()
         self.test_速度_10000000と10の最大公約数を0_01秒以内()
+        self.test_速度_10000000と20000000の最大公約数を0_01秒以内()
 
     @staticmethod
     @display_result
@@ -99,6 +100,20 @@ class GreatestCommonDivisorTester:
         number_1 = 10000000
         number_2 = 10
         expected = 10
+        required_speed_seconds = 0.01
+
+        start = dt.now()
+        result = GreatestCommonDivisorCalculator(number_1, number_2).get_gmd()
+        elapsed_seconds = (dt.now() - start).total_seconds()
+        assert elapsed_seconds <= required_speed_seconds, f"elapsed: 「{str(elapsed_seconds)} seconds」"
+        assert result == expected
+
+    @staticmethod
+    @display_result
+    def test_速度_10000000と20000000の最大公約数を0_01秒以内():
+        number_1 = 10000000
+        number_2 = 20000000
+        expected = 10000000
         required_speed_seconds = 0.01
 
         start = dt.now()
