@@ -16,7 +16,7 @@ class GreatestCommonDivisorCalculator:
         if is_both_zero:
             return 0
 
-        is_partial_zero = not is_both_zero and (self.number_1 == 0 or self.number_2 == 1)
+        is_partial_zero = not is_both_zero and (self.number_1 == 0 or self.number_2 == 0)
         if is_partial_zero:
             if self.number_1 == 0:
                 return self.number_2
@@ -26,7 +26,7 @@ class GreatestCommonDivisorCalculator:
     def _calculate_non_zero_included_case(self):
         assert self.number_1 != 0 and self.number_2 != 0
 
-        max_possible_divisor = max(abs(self.number_1), abs(self.number_2))
+        max_possible_divisor = min(abs(self.number_1), abs(self.number_2))
         for divisor in reversed(range(1, max_possible_divisor + 1)):
             if self.number_1 % divisor == 0 and self.number_2 % divisor == 0:
                 return divisor

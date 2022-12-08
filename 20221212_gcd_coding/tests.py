@@ -23,6 +23,7 @@ class GreatestCommonDivisorTester:
         self.test_3と7の最大公約数は1()
         self.test_マイナス3と7の最大公約数は1()
         self.test_0と7の最大公約数は7()
+        self.test_7と0の最大公約数は7()
         self.test_0と0の最大公約数は0()
         self.test_2と10の最大公約数は2()
         self.test_マイナス2と10の最大公約数は2()
@@ -62,6 +63,14 @@ class GreatestCommonDivisorTester:
 
     @staticmethod
     @display_result
+    def test_7と0の最大公約数は7():
+        number_1 = 7
+        number_2 = 0
+        expected = 7
+        assert GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+
+    @staticmethod
+    @display_result
     def test_0と0の最大公約数は0():
         number_1 = 0
         number_2 = 0
@@ -93,7 +102,7 @@ class GreatestCommonDivisorTester:
         required_speed_seconds = 0.01
 
         start = dt.now()
-        result = GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+        result = GreatestCommonDivisorCalculator(number_1, number_2).get_gmd()
         elapsed_seconds = (dt.now() - start).total_seconds()
         assert elapsed_seconds <= required_speed_seconds, f"elapsed: 「{str(elapsed_seconds)} seconds」"
         assert result == expected
