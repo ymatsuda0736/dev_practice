@@ -16,19 +16,6 @@ def display_result(func):
 
 class GreatestCommonDivisorTester(unittest.TestCase):
 
-    # def test(self):
-    #     self.test_1と1の最大公約数は1()
-    #     self.test_3と7の最大公約数は1()
-    #     self.test_マイナス3と7の最大公約数は1()
-    #     self.test_0と7の最大公約数は7()
-    #     self.test_7と0の最大公約数は7()
-    #     self.test_0と0の最大公約数は0()
-    #     self.test_2と10の最大公約数は2()
-    #     self.test_マイナス2と10の最大公約数は2()
-    #     self.test_速度_10000000と10の最大公約数を0_01秒以内()
-    #     self.test_速度_10000000と20000000の最大公約数を0_01秒以内()
-    #     self.test_速度_293999と294013の2つの大きい素数の最大公約数を0_01秒以内()
-
     def test_1と1の最大公約数は1(self):
         number_1 = 1
         number_2 = 1
