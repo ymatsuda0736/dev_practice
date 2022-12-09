@@ -3,7 +3,7 @@ from datetime import datetime as dt
 import unittest
 
 
-class GreatestCommonDivisorTester(unittest.TestCase):
+class GreatestCommonDivisorUnitTest(unittest.TestCase):
 
     def test_1と1の最大公約数は1(self):
         number_1 = 1
