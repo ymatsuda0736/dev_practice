@@ -3,17 +3,6 @@ from datetime import datetime as dt
 import unittest
 
 
-def display_result(func):
-    def exec_and_display(self):
-        try:
-            func()
-            print(f"☀️ 成功: 「{func.__name__}」")
-        except Exception as e:
-            print(f"☔️ 失敗: 「{func.__name__}」: {e}")
-
-    return exec_and_display
-
-
 class GreatestCommonDivisorTester(unittest.TestCase):
 
     def test_1と1の最大公約数は1(self):
