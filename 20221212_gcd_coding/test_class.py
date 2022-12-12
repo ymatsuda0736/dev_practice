@@ -35,7 +35,7 @@ class GreatestCommonDivisorTester:
         number_1 = 1
         number_2 = 1
         expected = 1
-        assert GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -43,7 +43,7 @@ class GreatestCommonDivisorTester:
         number_1 = 3
         number_2 = 7
         expected = 1
-        assert GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -51,7 +51,7 @@ class GreatestCommonDivisorTester:
         number_1 = -3
         number_2 = 7
         expected = 1
-        assert GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -59,7 +59,7 @@ class GreatestCommonDivisorTester:
         number_1 = 0
         number_2 = 7
         expected = 7
-        assert GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -67,7 +67,7 @@ class GreatestCommonDivisorTester:
         number_1 = 7
         number_2 = 0
         expected = 7
-        assert GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -75,7 +75,7 @@ class GreatestCommonDivisorTester:
         number_1 = 0
         number_2 = 0
         expected = 0
-        assert GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -83,7 +83,7 @@ class GreatestCommonDivisorTester:
         number_1 = 2
         number_2 = 10
         expected = 2
-        assert GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -91,7 +91,7 @@ class GreatestCommonDivisorTester:
         number_1 = -2
         number_2 = 10
         expected = 2
-        assert GreatestCommonDivisorCalculator(number_1, number_2).get_gmd() == expected
+        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -102,7 +102,7 @@ class GreatestCommonDivisorTester:
         required_speed_seconds = 0.01
 
         start = dt.now()
-        result = GreatestCommonDivisorCalculator(number_1, number_2).get_gmd()
+        result = GreatestCommonDivisorCalculator(number_1, number_2).calc()
         elapsed_seconds = (dt.now() - start).total_seconds()
         assert elapsed_seconds <= required_speed_seconds, f"elapsed: 「{str(elapsed_seconds)} seconds」"
         assert result == expected
@@ -116,7 +116,7 @@ class GreatestCommonDivisorTester:
         required_speed_seconds = 0.01
 
         start = dt.now()
-        result = GreatestCommonDivisorCalculator(number_1, number_2).get_gmd()
+        result = GreatestCommonDivisorCalculator(number_1, number_2).calc()
         elapsed_seconds = (dt.now() - start).total_seconds()
         assert elapsed_seconds <= required_speed_seconds, f"elapsed: 「{str(elapsed_seconds)} seconds」"
         assert result == expected
@@ -130,7 +130,7 @@ class GreatestCommonDivisorTester:
         required_speed_seconds = 0.01
 
         start = dt.now()
-        result = GreatestCommonDivisorCalculator(number_1, number_2).get_gmd()
+        result = GreatestCommonDivisorCalculator(number_1, number_2).calc()
         elapsed_seconds = (dt.now() - start).total_seconds()
         assert elapsed_seconds <= required_speed_seconds, f"elapsed: 「{str(elapsed_seconds)} seconds」"
         assert result == expected
@@ -141,4 +141,4 @@ class GreatestCommonDivisorTester:
         number_1 = 0.1
         number_2 = 0.1
         expected = None
-        result = GreatestCommonDivisorCalculator(number_1, number_2).get_gmd()
+        result = GreatestCommonDivisorCalculator(number_1, number_2).calc()
