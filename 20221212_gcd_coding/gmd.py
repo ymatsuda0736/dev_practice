@@ -1,39 +1,39 @@
 class GreatestCommonDivisorCalculator:
-    def __init__(self, number_1: int, number_2: int) -> None:
+    def __init__(self, n1: int, n2: int) -> None:
 
-        self.number_1 = number_1
-        self.number_2 = number_2
+        self.n1 = n1
+        self.n2 = n2
         self._validate()
 
     def _validate(self):
-        if self.number_1 % 1 != 0 or self.number_2 % 1 != 0:
+        if self.n1 % 1 != 0 or self.n2 % 1 != 0:
             raise ValueError("input must be integer")
 
-    def get_gmd(self):
-        zero_included_case_result = self._calculate_zero_included_case()
-        if zero_included_case_result is not None:
-            return zero_included_case_result
-
-        non_zero_case_result = self._calculate_non_zero_included_case()
-        return non_zero_case_result
-
-    def _calculate_zero_included_case(self):
-        is_both_zero = self.number_1 == 0 and self.number_2 == 0
-        if is_both_zero:
+    def calc(self):
+        if self._is_both_zero():
             return 0
+        elif self._is_partial_zero():
+            return self._get_non_zero()
+        else:
+            return self._calculate_non_zero_included_case()
 
-        is_partial_zero = not is_both_zero and (self.number_1 == 0 or self.number_2 == 0)
-        if is_partial_zero:
-            if self.number_1 == 0:
-                return self.number_2
-            elif self.number_2 == 0:
-                return self.number_1
+    def _is_both_zero(self):
+        return self.n1 == 0 and self.n2 == 0
+
+    def _is_partial_zero(self):
+        return self.n1 == 0 or self.n2 == 0
+
+    def _get_non_zero(self):
+        if self.n1 == 0:
+            return self.n2
+        elif self.n2 == 0:
+            return self.n1
 
     def _calculate_non_zero_included_case(self):
-        assert self.number_1 != 0 and self.number_2 != 0
+        assert self.n1 != 0 and self.n2 != 0
 
-        max_possible_divisor = min(abs(self.number_1), abs(self.number_2))
+        max_possible_divisor = min(abs(self.n1), abs(self.n2))
         for divisor in reversed(range(1, max_possible_divisor + 1)):
-            if self.number_1 % divisor == 0 and self.number_2 % divisor == 0:
+            if self.n1 % divisor == 0 and self.n2 % divisor == 0:
                 return divisor
         return 1
