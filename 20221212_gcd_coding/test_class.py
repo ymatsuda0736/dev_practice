@@ -24,6 +24,10 @@ class GreatestCommonDivisorTester:
         self.test_0と0の最大公約数は0()
         self.test_2と10の最大公約数は2()
         self.test_マイナス2と10の最大公約数は2()
+        self.test_2と4と18の最大公約数は2()
+        self.test_3と4と18の最大公約数は1()
+        self.test_0と0と18の最大公約数は18()
+        self.test_0と0と0の最大公約数は0()
         self.test_速度_10000000と10の最大公約数を0_01秒以内()
         self.test_速度_10000000と20000000の最大公約数を0_01秒以内()
         self.test_速度_293999と294013の2つの大きい素数の最大公約数を0_01秒以内()
@@ -92,6 +96,26 @@ class GreatestCommonDivisorTester:
         number_2 = 10
         expected = 2
         assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
+
+    @staticmethod
+    @display_result
+    def test_2と4と18の最大公約数は2():
+        assert GreatestCommonDivisorCalculator(2, 4, 18).calc() == 2
+
+    @staticmethod
+    @display_result
+    def test_3と4と18の最大公約数は1():
+        assert GreatestCommonDivisorCalculator(1, 4, 18).calc() == 1
+
+    @staticmethod
+    @display_result
+    def test_0と0と18の最大公約数は18():
+        assert GreatestCommonDivisorCalculator(0, 0, 18).calc() == 18
+
+    @staticmethod
+    @display_result
+    def test_0と0と0の最大公約数は0():
+        assert GreatestCommonDivisorCalculator(0, 0, 0).calc() == 0
 
     @staticmethod
     @display_result
