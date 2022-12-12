@@ -15,9 +15,6 @@ def display_result(func):
 
 class GreatestCommonDivisorTester:
 
-    def __init__(self):
-        pass
-
     def test(self):
         self.test_1と1の最大公約数は1()
         self.test_3と7の最大公約数は1()
@@ -30,6 +27,7 @@ class GreatestCommonDivisorTester:
         self.test_速度_10000000と10の最大公約数を0_01秒以内()
         self.test_速度_10000000と20000000の最大公約数を0_01秒以内()
         self.test_速度_293999と294013の2つの大きい素数の最大公約数を0_01秒以内()
+        self.test_エラー_小数は受け付けない()
 
     @staticmethod
     @display_result
@@ -136,3 +134,11 @@ class GreatestCommonDivisorTester:
         elapsed_seconds = (dt.now() - start).total_seconds()
         assert elapsed_seconds <= required_speed_seconds, f"elapsed: 「{str(elapsed_seconds)} seconds」"
         assert result == expected
+
+    @staticmethod
+    @display_result
+    def test_エラー_小数は受け付けない():
+        number_1 = 0.1
+        number_2 = 0.1
+        expected = None
+        result = GreatestCommonDivisorCalculator(number_1, number_2).get_gmd()

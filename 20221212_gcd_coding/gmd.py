@@ -1,7 +1,13 @@
 class GreatestCommonDivisorCalculator:
     def __init__(self, number_1: int, number_2: int) -> None:
+
         self.number_1 = number_1
         self.number_2 = number_2
+        self._validate()
+
+    def _validate(self):
+        if self.number_1 % 1 != 0 or self.number_2 % 1 != 0:
+            raise ValueError("input must be integer")
 
     def get_gmd(self):
         zero_included_case_result = self._calculate_zero_included_case()
