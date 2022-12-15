@@ -22,7 +22,6 @@ class GreatestCommonDivisorCalculator:
         return [n for n in self.numbers if n != 0]
 
     def _get_from_non_zeros(self):
-
         non_zeros = self._drop_zero()
         max_possible_divisor = min([abs(n) for n in non_zeros])
         for divisor in reversed(range(1, max_possible_divisor + 1)):
