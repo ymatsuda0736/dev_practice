@@ -1,4 +1,4 @@
-from gmd import GreatestCommonDivisorCalculator
+from gmd import GCDCalculator
 from datetime import datetime as dt
 
 
@@ -16,6 +16,7 @@ def display_result(func):
 class GreatestCommonDivisorTester:
 
     def test(self):
+        self.test_8の最大公約数は8()
         self.test_1と1の最大公約数は1()
         self.test_3と7の最大公約数は1()
         self.test_マイナス3と7の最大公約数は1()
@@ -35,11 +36,16 @@ class GreatestCommonDivisorTester:
 
     @staticmethod
     @display_result
+    def test_8の最大公約数は8():
+        assert GCDCalculator(8).calc() == 8
+
+    @staticmethod
+    @display_result
     def test_1と1の最大公約数は1():
         number_1 = 1
         number_2 = 1
         expected = 1
-        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
+        assert GCDCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -47,7 +53,7 @@ class GreatestCommonDivisorTester:
         number_1 = 3
         number_2 = 7
         expected = 1
-        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
+        assert GCDCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -55,7 +61,7 @@ class GreatestCommonDivisorTester:
         number_1 = -3
         number_2 = 7
         expected = 1
-        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
+        assert GCDCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -63,7 +69,7 @@ class GreatestCommonDivisorTester:
         number_1 = 0
         number_2 = 7
         expected = 7
-        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
+        assert GCDCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -71,7 +77,7 @@ class GreatestCommonDivisorTester:
         number_1 = 7
         number_2 = 0
         expected = 7
-        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
+        assert GCDCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -79,7 +85,7 @@ class GreatestCommonDivisorTester:
         number_1 = 0
         number_2 = 0
         expected = 0
-        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
+        assert GCDCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -87,7 +93,7 @@ class GreatestCommonDivisorTester:
         number_1 = 2
         number_2 = 10
         expected = 2
-        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
+        assert GCDCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
@@ -95,27 +101,27 @@ class GreatestCommonDivisorTester:
         number_1 = -2
         number_2 = 10
         expected = 2
-        assert GreatestCommonDivisorCalculator(number_1, number_2).calc() == expected
+        assert GCDCalculator(number_1, number_2).calc() == expected
 
     @staticmethod
     @display_result
     def test_2と4と18の最大公約数は2():
-        assert GreatestCommonDivisorCalculator(2, 4, 18).calc() == 2
+        assert GCDCalculator(2, 4, 18).calc() == 2
 
     @staticmethod
     @display_result
     def test_3と4と18の最大公約数は1():
-        assert GreatestCommonDivisorCalculator(1, 4, 18).calc() == 1
+        assert GCDCalculator(1, 4, 18).calc() == 1
 
     @staticmethod
     @display_result
     def test_0と0と18の最大公約数は18():
-        assert GreatestCommonDivisorCalculator(0, 0, 18).calc() == 18
+        assert GCDCalculator(0, 0, 18).calc() == 18
 
     @staticmethod
     @display_result
     def test_0と0と0の最大公約数は0():
-        assert GreatestCommonDivisorCalculator(0, 0, 0).calc() == 0
+        assert GCDCalculator(0, 0, 0).calc() == 0
 
     @staticmethod
     @display_result
@@ -126,7 +132,7 @@ class GreatestCommonDivisorTester:
         required_speed_seconds = 0.01
 
         start = dt.now()
-        result = GreatestCommonDivisorCalculator(number_1, number_2).calc()
+        result = GCDCalculator(number_1, number_2).calc()
         elapsed_seconds = (dt.now() - start).total_seconds()
         assert elapsed_seconds <= required_speed_seconds, f"elapsed: 「{str(elapsed_seconds)} seconds」"
         assert result == expected
@@ -140,7 +146,7 @@ class GreatestCommonDivisorTester:
         required_speed_seconds = 0.01
 
         start = dt.now()
-        result = GreatestCommonDivisorCalculator(number_1, number_2).calc()
+        result = GCDCalculator(number_1, number_2).calc()
         elapsed_seconds = (dt.now() - start).total_seconds()
         assert elapsed_seconds <= required_speed_seconds, f"elapsed: 「{str(elapsed_seconds)} seconds」"
         assert result == expected
@@ -154,7 +160,7 @@ class GreatestCommonDivisorTester:
         required_speed_seconds = 0.01
 
         start = dt.now()
-        result = GreatestCommonDivisorCalculator(number_1, number_2).calc()
+        result = GCDCalculator(number_1, number_2).calc()
         elapsed_seconds = (dt.now() - start).total_seconds()
         assert elapsed_seconds <= required_speed_seconds, f"elapsed: 「{str(elapsed_seconds)} seconds」"
         assert result == expected
@@ -165,4 +171,4 @@ class GreatestCommonDivisorTester:
         number_1 = 0.1
         number_2 = 0.1
         expected = None
-        result = GreatestCommonDivisorCalculator(number_1, number_2).calc()
+        result = GCDCalculator(number_1, number_2).calc()
