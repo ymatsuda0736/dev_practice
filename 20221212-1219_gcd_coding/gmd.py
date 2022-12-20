@@ -1,3 +1,6 @@
+import numpy
+
+
 class GCDCalculator:
     def __init__(self, *nums):
 
@@ -20,8 +23,19 @@ class GCDCalculator:
 
     def _get_non_zeros_gcd(self):
         non_zeros = [n for n in self.nums if n != 0]
-        max_possible_divisor = min([abs(n) for n in non_zeros])
-        for divisor in reversed(range(1, max_possible_divisor + 1)):
+        min_abs_n = min([abs(n) for n in non_zeros])
+        divisor_candidates = self._get_divisors(min_abs_n)
+
+        divisor_candidates.sort(reverse=True)
+        for divisor in divisor_candidates:
             if all([n % divisor == 0 for n in non_zeros]):
                 return divisor
-        return 1
+        else:
+            return 1
+
+    @staticmethod
+    def _get_divisors(n: int):
+        assert 1 <= n and isinstance(n, int)
+        range_max = int(numpy.sqrt(abs(n)))
+        pair_list = [[i, int(n / i)] for i in range(1, range_max + 1) if n % i == 0]
+        return sorted(sum(pair_list, []))
