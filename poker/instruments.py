@@ -1,6 +1,25 @@
 import itertools
 import random
 
+from persons import Player, Dealer
+
+
+class PlayingTable:
+
+    MAX_PLAYERS = 5
+
+    def __init__(self, dealer: Dealer):
+
+        self.dealer = dealer
+        self.players = []
+
+    def add_player(self, *new_players):
+
+        if not all([isinstance(Player, p) for p in new_players]):
+            raise ValueError("プレイヤーが不正です")
+        if self.MAX_PLAYERS < len(self.players) + len(new_players):
+            raise ValueError("定員オーバーです. 本テーブルの定員数は{max}です.".format(max=self.MAX_PLAYERS))
+
 
 class Card:
     '''
