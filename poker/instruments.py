@@ -3,10 +3,8 @@ import random
 
 
 class Card:
-    '''
-    トランプのカードを表すクラス
-    ジョーカーは未対応
-    '''
+    '''トランプのカードを表すクラス
+    ジョーカーは未対応'''
 
     SUITS_SYMBOLS_DICT = {"heart": "❤️",
                           "clover": "♣︎",
@@ -42,10 +40,8 @@ class Card:
 
 
 class Deck:
-    '''
-    トランプのカードデックを表すクラス
-    ジョーカーは含まない
-    '''
+    '''トランプのカードデックを表すクラス
+    ジョーカーは含まない'''
 
     def __init__(self):
         self.cards = self._create_initial_deck()
