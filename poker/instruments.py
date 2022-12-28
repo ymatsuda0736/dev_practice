@@ -28,9 +28,9 @@ class Card:
         12: "Q",
         13: "K"
     }
-
-    MIN_NUM = 1
-    MAX_NUM = 13
+    MIN_NUM = min(NUMS_DISPLAY_DICT.keys())
+    MAX_NUM = max(NUMS_DISPLAY_DICT.keys())
+    assert len(NUMS_DISPLAY_DICT) == MAX_NUM, "数値の設定を確認ください"
 
     def __init__(self,
                  suit: str,
