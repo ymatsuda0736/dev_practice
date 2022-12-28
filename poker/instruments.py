@@ -6,10 +6,28 @@ class Card:
     '''トランプのカードを表すクラス
     ジョーカーは未対応'''
 
-    SUITS_SYMBOLS_DICT = {"heart": "❤️",
-                          "clover": "♣︎",
-                          "spade": "♠︎",
-                          "diamond": "♦︎"}
+    SUITS_DISPLAY_DICT = {
+        "heart": "❤️",
+        "clover": "♣︎",
+        "spade": "♠︎",
+        "diamond": "♦︎"
+    }
+
+    NUMS_DISPLAY_DICT = {
+        1: "A",
+        2: "2",
+        3: "3",
+        4: "4",
+        5: "5",
+        6: "6",
+        7: "7",
+        8: "8",
+        9: "9",
+        10: "10",
+        11: "J",
+        12: "Q",
+        13: "K"
+    }
 
     MIN_NUM = 1
     MAX_NUM = 13
@@ -23,7 +41,7 @@ class Card:
         self.number = number
 
     def _validate(self, suit, number):
-        suit_options = self.SUITS_SYMBOLS_DICT.keys()
+        suit_options = self.SUITS_DISPLAY_DICT.keys()
         if not any(suit == k for k in suit_options):
             suits = ",".join(suit_options)
             raise ValueError("絵柄は{suits}から選択してください".format(suits=suits))
@@ -35,8 +53,9 @@ class Card:
             raise ValueError("数値は{min}から{max}の間の値を入力してください".format(min=self.MIN_NUM, max=self.MAX_NUM))
 
     def __str__(self):
-        suit_symbol = self.SUITS_SYMBOLS_DICT[self.suit]
-        return suit_symbol + str(self.number)
+        suit_display = self.SUITS_DISPLAY_DICT[self.suit]
+        number_display = self.NUMS_DISPLAY_DICT[self.number]
+        return suit_display + number_display
 
 
 class Deck:
@@ -48,7 +67,7 @@ class Deck:
 
     def _create_initial_deck(self):
 
-        suits = Card.SUITS_SYMBOLS_DICT.keys()
+        suits = Card.SUITS_DISPLAY_DICT.keys()
         min_num = Card.MIN_NUM
         max_num = Card.MAX_NUM
 
