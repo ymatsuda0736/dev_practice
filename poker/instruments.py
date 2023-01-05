@@ -12,6 +12,7 @@ class Card:
         "spade": "♠︎",
         "diamond": "♦︎"
     }
+    SUITS = SUITS_DISPLAY_DICT.keys()
 
     NUMS_DISPLAY_DICT = {
         1: "A",
@@ -28,34 +29,34 @@ class Card:
         12: "Q",
         13: "K"
     }
+    NUMS = NUMS_DISPLAY_DICT.keys()
     MIN_NUM = min(NUMS_DISPLAY_DICT.keys())
     MAX_NUM = max(NUMS_DISPLAY_DICT.keys())
-    assert len(NUMS_DISPLAY_DICT) == MAX_NUM, "数値の設定を確認ください"
+    assert len(NUMS) == len(range(MIN_NUM, MAX_NUM + 1)), "数値の設定を確認ください"
 
     def __init__(self,
                  suit: str,
-                 number: int):
+                 num: int):
 
-        self._validate(suit, number)
+        self._validate(suit, num)
         self.suit = suit
-        self.number = number
+        self.num = num
 
-    def _validate(self, suit, number):
-        suit_options = self.SUITS_DISPLAY_DICT.keys()
-        if not any(suit == k for k in suit_options):
-            suits = ",".join(suit_options)
+    def _validate(self, suit, num):
+        if not any(suit == k for k in self.SUITS):
+            suits = ",".join(self.SUITS)
             raise ValueError("絵柄は{suits}から選択してください".format(suits=suits))
 
-        if not isinstance(number, int):
+        if not isinstance(num, int):
             raise ValueError("数値はinteger型を入力してください")
 
-        if number < self.MIN_NUM or self.MAX_NUM < number:
+        if num < self.MIN_NUM or self.MAX_NUM < num:
             raise ValueError("数値は{min}から{max}の間の値を入力してください".format(min=self.MIN_NUM, max=self.MAX_NUM))
 
     def __str__(self):
         suit_display = self.SUITS_DISPLAY_DICT[self.suit]
-        number_display = self.NUMS_DISPLAY_DICT[self.number]
-        return suit_display + number_display
+        num_display = self.NUMS_DISPLAY_DICT[self.num]
+        return suit_display + num_display
 
 
 class Deck:
@@ -67,7 +68,7 @@ class Deck:
 
     def _create_initial_deck(self):
 
-        suits = Card.SUITS_DISPLAY_DICT.keys()
+        suits = Card.SUITS.keys()
         min_num = Card.MIN_NUM
         max_num = Card.MAX_NUM
 

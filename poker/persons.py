@@ -1,9 +1,9 @@
 from instruments import Deck, Card, Chip
 
-HAND_CARD_NUM = 5
-
 
 class Player:
+
+    HAND_CARD_NUM = 5
 
     def __init__(self,
                  *chips: Chip):
@@ -13,6 +13,7 @@ class Player:
         self.chips = chips
         self.dealer = None
         self.hand_cards = None
+        self.is_folded = False
 
     def _validate(self):
         # Chipが不正じゃないかなどチェック
@@ -21,9 +22,12 @@ class Player:
     def receive_cards(self, *cards):
         if any([not isinstance(Card, c) for c in cards]):
             raise ValueError("カードが不正です")
-        if len(cards) != HAND_CARD_NUM:
-            raise ValueError("手札は{num}枚受け取ってください".format(num=HAND_CARD_NUM))
+        if len(cards) != self.HAND_CARD_NUM:
+            raise ValueError("手札は{num}枚受け取ってください".format(num=self.HAND_CARD_NUM))
         self.hand_cards = cards
+
+    def pay_chip(self):
+        pass
 
     def bet(self, bet):
         # 自身のチップからベットを行う
@@ -33,12 +37,23 @@ class Player:
         # 自身のハンドをオープンする
         return self.hand_cards
 
+    def raise_(self):
+        pass
+
+    def call(self, num):
+        pass
+
+    def fold(self):
+        self.is_folded = True
+
+    def receive_chip(self):
+        pass
+
 
 class Dealer:
 
     def __init__(self):
         self.deck = None
-        self.players = None
 
     def start_game(self):
         self.deck = Deck()
@@ -47,23 +62,10 @@ class Dealer:
         # デッキをシャッフルして各プレイヤーにカードを配る
         pass
 
+    def ask(self):
+        # 各プレイヤーにcall, raise, foldを聞く
+        pass
+
     def judge_winner(self):
         # 各プレイヤーのカードから勝者を判定する
         pass
-
-
-class PlayingTable:
-
-    MAX_PLAYERS = 5
-
-    def __init__(self, dealer: Dealer):
-
-        self.dealer = dealer
-        self.players = []
-
-    def add_player(self, *new_players: Player):
-
-        if not all([isinstance(Player, p) for p in new_players]):
-            raise ValueError("プレイヤーが不正です")
-        if self.MAX_PLAYERS < len(self.players) + len(new_players):
-            raise ValueError("定員オーバーです. 本テーブルの定員数は{max}です.".format(max=self.MAX_PLAYERS))
