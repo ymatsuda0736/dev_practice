@@ -107,9 +107,9 @@ class Evaluator:
     }
 
     @classmethod
-    def _straight_flush(self, cards):
-        eval_straight_dict = self._straight(cards)
-        eval_flush_dict = self._flush(cards)
+    def straight_flush(self, cards):
+        eval_straight_dict = self.straight(cards)
+        eval_flush_dict = self.flush(cards)
         is_straight_flush = eval_straight_dict["has_hand"] and eval_flush_dict["has_hand"]
 
         eval_dict = self.RESULT_BASE_DICT.copy()
@@ -117,42 +117,42 @@ class Evaluator:
         return eval_dict
 
     @classmethod
-    def _straight(self, cards):
+    def straight(self, cards):
         eval_dict = self.RESULT_BASE_DICT.copy()
         return eval_dict
 
     @classmethod
-    def _flush(self, cards):
+    def flush(self, cards):
         eval_dict = self.RESULT_BASE_DICT.copy()
         return eval_dict
 
     @classmethod
-    def _four_card(self, cards):
+    def four_card(self, cards):
         eval_dict = self.RESULT_BASE_DICT.copy()
         return eval_dict
 
     @classmethod
-    def _full_house(self, cards):
+    def full_house(self, cards):
         eval_dict = self.RESULT_BASE_DICT.copy()
         return eval_dict
 
     @classmethod
-    def _three_card(self, cards):
+    def three_card(self, cards):
         eval_dict = self.RESULT_BASE_DICT.copy()
         return eval_dict
 
     @classmethod
-    def _two_pair(self, cards):
+    def two_pair(self, cards):
         eval_dict = self.RESULT_BASE_DICT.copy()
         return eval_dict
 
     @classmethod
-    def _one_pair(self, cards):
+    def one_pair(self, cards):
         eval_dict = self.RESULT_BASE_DICT.copy()
         return eval_dict
 
     @classmethod
-    def _no_hand(self, cards):
+    def no_hand(self, cards):
         eval_dict = self.RESULT_BASE_DICT.copy()
         eval_dict["has_hand"] = True
         return eval_dict
@@ -174,15 +174,15 @@ class HandRule:
     POKER_HANDS_ASCENDING = list(reversed(POKER_HANDS_DESCENDING))
 
     HAND_EVALUATOR_DICT = {
-        "straight_flush": Evaluator._straight_flush,
-        "four_card": Evaluator._four_card,
-        "full_house": Evaluator._full_house,
-        "flush": Evaluator._flush,
-        "straight": Evaluator._straight,
-        "three_card": Evaluator._three_card,
-        "two_pair": Evaluator._two_pair,
-        "one_pair": Evaluator._one_pair,
-        "no_hand": Evaluator._no_hand
+        "straight_flush": Evaluator.straight_flush,
+        "four_card": Evaluator.four_card,
+        "full_house": Evaluator.full_house,
+        "flush": Evaluator.flush,
+        "straight": Evaluator.straight,
+        "three_card": Evaluator.three_card,
+        "two_pair": Evaluator.two_pair,
+        "one_pair": Evaluator.one_pair,
+        "no_hand": Evaluator.no_hand
     }
     assert(POKER_HANDS_DESCENDING) != sorted(list(HAND_EVALUATOR_DICT.keys()))
 
